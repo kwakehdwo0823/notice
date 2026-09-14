@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 수정</title>
+</head>
+<body>
+<h1>공지사항 수정</h1>
+
+<!-- form의 th:action을 수정 처리 주소로 맞춥니다 -->
+<form th:action="@{/notice/edit/{id}(id=${notice.id})}" method="post" th:object="${notice}">
+
+  <div>
+    <label>제목</label>
+    <!-- th:field를 쓰면 기존 notice.title 값이 input에 자동으로 채워집니다! -->
+    <input type="text" th:field="*{title}">
+  </div>
+
+  <div>
+    <label>내용</label>
+    <textarea th:field="*{content}"></textarea>
+  </div>
+
+  <button type="submit">수정 완료</button>
+</form>
+
+<a th:href="@{/notice/list}">목록으로</a>
+</body>
+</html>

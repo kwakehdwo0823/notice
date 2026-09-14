@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>글쓰기</title>
+</head>
+<body>
+<h1>공지사항 등록</h1>
+
+<!-- POST 방식으로 /notice/write 주소에 데이터를 던집니다 -->
+<form action="/notice/write" method="post">
+  <div>
+    <label>제목: </label>
+    <input type="text" name="title" placeholder="제목을 입력하세요">
+  </div>
+  <div>
+    <label>내용: </label>
+    <textarea name="content" placeholder="내용을 입력하세요"></textarea>
+  </div>
+  <button type="submit">등록하기</button>
+</form>
+
+<br>
+<a href="/notice/list">목록으로 돌아가기</a>
+</body>
+</html>

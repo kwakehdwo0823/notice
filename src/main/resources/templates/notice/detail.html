@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>상세 조회</title>
+</head>
+<body>
+<h1>공지사항 상세 보기</h1>
+
+<div>
+  <p><strong>글 번호:</strong> <span th:text="${notice.id}">1</span></p>
+  <p><strong>제목:</strong> <span th:text="${notice.title}">제목 예시</span></p>
+  <p><strong>내용:</strong> <span th:text="${notice.content}">내용 예시</span></p>
+</div>
+
+<br>
+<!-- 삭제 버튼 (POST 방식으로 해당 id의 삭제 주소로 찌름) -->
+<form th:action="@{/notice/delete/{id}(id=${notice.id})}" method="post" style="display:inline;">
+  <button type="submit">삭제하기</button>
+</form>
+
+<a href="/notice/list">목록으로</a>
+<!-- detail.html 내부 -->
+<a th:href="@{/notice/edit/{id}(id=${notice.id})}">수정하기</a>
+
+</body>
+</html>
