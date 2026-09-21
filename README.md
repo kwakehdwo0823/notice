@@ -17,7 +17,7 @@ Spring Boot、Thymeleaf、JPAを使用して、Webアプリケーションにお
 ## 2. 技術スタック
 
 ### Backend
-- Java 17
+- Java 25
 - Spring Boot
 - Spring Data JPA
 
