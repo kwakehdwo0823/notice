@@ -1,33 +1,94 @@
-# CRUD기능을 활용한 게시판 글 작성 및 수정 시스템 (notice Project)
+# 📝 CRUD機能を活用した掲示板作成・編集システム（Notice Project）
 
-## 1. 프로젝트 개요 (Overview)
-* **프로젝트명**: Spring Boot 기반 공지사항 관리 시스템 (Notice Board Project)
-* **개발 기간**: (예: 2026.09 ~ 2026.09) / 개인 프로젝트 (1인)
-* **프로젝트 소개**:
-  *Spring Boot와 Thymeleaf, JPA를 활용하여 웹 애플리케이션의 핵심 기능인 CRUD(생성, 조회, 수정, 삭제) 파이프라인을 구현한 개인 프로젝트입니다. 메인 프로젝트에서는 CRUD기능을 충분히 활용하지 못한 것에 아쉬움을 느껴 이를 보완하고자 구성하였습니다.
+## 1. プロジェクト概要
 
-## 2. 기술 스택 (Tech Stack)
-* **Backend**: Java 17+, Spring Boot, Spring Data JPA
-* **Frontend**: Thymeleaf, HTML5, CSS
-* **Database**: H2 Database (In-Memory DB)
-* **Tools**: Git, GitHub, IntelliJ IDEA, Gradle
+- **プロジェクト概要**：Spring Bootを使用した掲示板管理システム
+- **開発期間**：2026.09 ～ 2026.09
+- **開発人数**：1名（個人開発）
 
-## 3. 핵심 기능 (Key Features)
-* **공지사항 목록 조회 (List)**: 등록된 전체 공지사항 목록을 리스트 형태로 출력
-* **상세 보기 및 단건 조회 (Detail)**: 특정 게시글의 상세 내용 확인
-* **게시글 작성 (Create)**: 제목과 내용을 입력하여 새로운 공지사항 등록
-* **게시글 수정 (Update)**: 기존 데이터를 불러와 내용을 변경하고 덮어씌우는 수정 기능 (JPA 영속성 컨텍스트 및 save() 메서드 활용)
-* **게시글 삭제 (Delete)**: 특정 ID를 받아 데이터베이스에서 안전하게 삭제 후 목록으로 리다이렉트
+### プロジェクトについて
 
-## 4. 아키텍처 및 데이터 흐름 (Architecture)
-* **Layered Architecture (계층형 구조)** 적용
-  * `Controller` ➔ `Service` ➔ `Repository` ➔ `Database` 순으로 관심사 분리(Separation of Concerns)를 고려하여 설계함.
-  * 각각의 역할로는
-  * Controller: 기능별로 조작된 데이터를 반환
-  * Service: 가져온 데이터를 각각의 CRUD기능 별로 조작
-  * Repository: 데이터 조회 및 저장
-  * Entity: 데이터를 DB 테이블과 매핑
+Spring Boot、Thymeleaf、JPAを使用して、Webアプリケーションにおける基本的なCRUD機能を実装した個人プロジェクトです。
 
+掲示板を題材として、投稿の作成・一覧表示・詳細表示・編集・削除までの一連の処理を実装しました。
 
-## 5. 트러블슈팅 및 배운 점 (Troubleshooting) 
-*메인 프로젝트에서는 CRUD 메서드의 동작 원리를 충분히 살펴보지 못했지만, 이번 프로젝트에서 게시글 생성·조회·수정·삭제를 구현하며 각 메서드의 역할과 데이터 흐름을 학습했습니다. 특히 Controller에서 요청을 처리하고 Service에서 기능을 수행한 뒤 Repository를 통해 데이터를 조회하거나 저장하는 구조를 익혔습니다.
+---
+
+## 2. 技術スタック
+
+### Backend
+- Java 17
+- Spring Boot
+- Spring Data JPA
+
+### Frontend
+- Thymeleaf
+- HTML5
+- CSS
+
+### Database
+- H2 Database（In-Memory DB）
+
+### Tools
+- Git
+- GitHub
+- IntelliJ IDEA
+- Gradle
+
+---
+
+## 3. 主な機能
+
+### 投稿一覧（List）
+- 登録されている掲示板の一覧を表示
+
+### 投稿詳細（Detail）
+- 指定した投稿の詳細内容を表示
+
+### 投稿作成（Create）
+- タイトルと本文を入力し、新しい投稿を登録
+
+### 投稿編集（Update）
+- 既存の投稿データを取得し、内容を編集して更新
+
+### 投稿削除（Delete）
+- 指定したIDの投稿をデータベースから削除
+- 削除後、投稿一覧へリダイレクト
+
+---
+
+## 4. アーキテクチャとデータフロー
+
+### Layered Architecture（レイヤードアーキテクチャ）
+
+`Controller` → `Service` → `Repository` → `Database`
+
+各層の責務を分離し、保守性を意識した構成にしています。
+
+- **Controller**
+  - HTTPリクエストを受け取り、画面遷移や処理の呼び出しを担当
+
+- **Service**
+  - 投稿データに対するCRUD処理などのビジネスロジックを担当
+
+- **Repository**
+  - データベースへのデータの検索・保存・更新・削除を担当
+
+- **Entity**
+  - 投稿データとデータベースのテーブルをマッピング
+
+---
+
+## 5. トラブルシューティング・学んだこと
+
+### CRUD処理の流れについて
+
+メインプロジェクトではCRUD処理の一部を実装しましたが、各処理の仕組みについて十分に理解できていない部分がありました。
+
+そこで、本プロジェクトでは掲示板を題材として、投稿の作成・取得・更新・削除を一通り実装しました。
+
+実装を通じて、Controllerでリクエストを受け取り、Serviceで処理を行い、Repositoryを通してデータベースへアクセスするという、Webアプリケーションにおける基本的な処理の流れを理解しました。
+
+また、CRUD処理を実装する中で、各処理に応じたHTTPリクエストやSpring Bootのアノテーション、JPAのメソッドを使い分ける必要があることを学びました。
+
+単純に機能を実装するだけではなく、「なぜこの処理が必要なのか」「なぜこの方法を使用するのか」を意識しながら開発するきっかけとなったプロジェクトです。
